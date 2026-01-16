@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { ShoppingCart, Heart } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
+import { useCart } from "@/hooks/useCart";
+import { toast } from "sonner";
 
 interface ProductCardProps {
   id: string;
@@ -25,6 +27,14 @@ export const ProductCard = ({
   isNew,
   discount,
 }: ProductCardProps) => {
+  const { addItem } = useCart();
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault();
+    addItem({ id, name, price, image });
+    toast.success("Producto añadido al carrito");
+  };
+
   return (
     <Card className="group relative overflow-hidden border-border hover:border-primary/50 transition-all duration-300">
       {(isNew || discount) && (
@@ -72,7 +82,7 @@ export const ProductCard = ({
       </CardContent>
 
       <CardFooter className="p-4 pt-0">
-        <Button className="w-full" size="sm">
+        <Button className="w-full" size="sm" onClick={handleAddToCart}>
           <ShoppingCart className="h-4 w-4 mr-2" />
           Añadir al carrito
         </Button>

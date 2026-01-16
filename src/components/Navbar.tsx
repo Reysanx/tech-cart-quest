@@ -11,10 +11,12 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { categories } from "@/data/products";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { useCart } from "@/hooks/useCart";
 
 export const Navbar = () => {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
+  const { totalItems } = useCart();
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -88,9 +90,15 @@ export const Navbar = () => {
             <Button
               variant="ghost"
               size="icon"
+              className="relative"
               onClick={() => navigate("/cart")}
             >
               <ShoppingCart className="h-5 w-5" />
+              {totalItems > 0 && (
+                <span className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-primary text-primary-foreground text-xs flex items-center justify-center font-semibold">
+                  {totalItems > 99 ? "99+" : totalItems}
+                </span>
+              )}
             </Button>
           </div>
         </div>
