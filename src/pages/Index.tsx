@@ -33,13 +33,13 @@ const Index = () => {
                 </span>
               </div>
               <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
-                Potencia tu{" "}
+                Tu tienda de{" "}
                 <span className="gradient-primary bg-clip-text text-transparent">
-                  experiencia gaming
+                  electrónica online
                 </span>
               </h1>
               <p className="text-lg text-muted-foreground max-w-md">
-                Los mejores componentes y periféricos gaming al mejor precio.
+                Smartphones, portátiles, televisores y mucho más al mejor precio.
                 Envío gratis en pedidos superiores a 50€.
               </p>
               <div className="flex gap-4">
@@ -111,7 +111,7 @@ const Index = () => {
           <div>
             <h2 className="text-3xl font-bold mb-2">Productos Destacados</h2>
             <p className="text-muted-foreground">
-              Lo último en tecnología gaming
+              Lo último en tecnología
             </p>
           </div>
           <Link to="/category/todos">
@@ -189,8 +189,8 @@ const Index = () => {
             ¿Necesitas ayuda para elegir?
           </h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Nuestro equipo de expertos está aquí para ayudarte a encontrar los
-            componentes perfectos para tu setup
+            Nuestro equipo de expertos está aquí para ayudarte a encontrar
+            el producto perfecto para ti
           </p>
           <Button size="lg" className="gradient-primary">
             Contactar con expertos
@@ -203,18 +203,18 @@ const Index = () => {
         <div className="container mx-auto px-4 py-12">
           <div className="grid md:grid-cols-4 gap-8">
             <div>
-              <h3 className="font-bold mb-4">TechStore</h3>
+              <h3 className="font-bold mb-4">ElectroStore</h3>
               <p className="text-sm text-muted-foreground">
-                Tu tienda de confianza para componentes gaming y electrónica.
+                Tu tienda de confianza para todo tipo de electrónica.
               </p>
             </div>
             <div>
               <h4 className="font-semibold mb-4">Categorías</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>Procesadores</li>
-                <li>Tarjetas Gráficas</li>
-                <li>Memorias RAM</li>
-                <li>Almacenamiento</li>
+                <li>Smartphones</li>
+                <li>Portátiles</li>
+                <li>Televisores</li>
+                <li>Audio</li>
               </ul>
             </div>
             <div>
@@ -236,7 +236,7 @@ const Index = () => {
             </div>
           </div>
           <div className="mt-8 pt-8 border-t border-border text-center text-sm text-muted-foreground">
-            © 2025 TechStore. Todos los derechos reservados.
+            © 2025 ElectroStore. Todos los derechos reservados.
           </div>
         </div>
       </footer>

@@ -1,23 +1,16 @@
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Search, ShoppingCart, User, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-
-const categories = [
-  "Procesadores",
-  "Tarjetas Gráficas",
-  "Memorias RAM",
-  "Almacenamiento",
-  "Placas Base",
-  "Periféricos",
-];
+import { categories } from "@/data/products";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export const Navbar = () => {
   const navigate = useNavigate();
@@ -42,7 +35,7 @@ export const Navbar = () => {
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="text-background"
+                className="text-primary-foreground"
               >
                 <path
                   d="M12 2L2 7L12 12L22 7L12 2Z"
@@ -67,7 +60,7 @@ export const Navbar = () => {
                 />
               </svg>
             </div>
-            <span className="text-xl font-bold">TechStore</span>
+            <span className="text-xl font-bold">ElectroStore</span>
           </Link>
 
           <form onSubmit={handleSearch} className="hidden md:flex flex-1 max-w-xl">
@@ -83,7 +76,8 @@ export const Navbar = () => {
             </div>
           </form>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1">
+            <ThemeToggle />
             <Button
               variant="ghost"
               size="icon"
@@ -121,7 +115,7 @@ export const Navbar = () => {
             </DropdownMenuContent>
           </DropdownMenu>
 
-          {categories.slice(0, 4).map((category) => (
+          {categories.slice(0, 5).map((category) => (
             <Link
               key={category}
               to={`/category/${category.toLowerCase().replace(/\s+/g, "-")}`}
