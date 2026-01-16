@@ -3,43 +3,12 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Trash2, Plus, Minus } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-
-interface CartItem {
-  id: string;
-  name: string;
-  price: number;
-  image: string;
-  quantity: number;
-}
+import { useCart } from "@/hooks/useCart";
 
 const Cart = () => {
   const navigate = useNavigate();
-  const [cartItems, setCartItems] = useState<CartItem[]>([
-    {
-      id: "1",
-      name: "AMD Ryzen 9 7950X 4.5 GHz",
-      price: 599,
-      image: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=500",
-      quantity: 1,
-    },
-  ]);
+  const { items, removeItem, updateQuantity, subtotal } = useCart();
 
-  const updateQuantity = (id: string, delta: number) => {
-    setCartItems(items =>
-      items.map(item =>
-        item.id === id
-          ? { ...item, quantity: Math.max(1, item.quantity + delta) }
-          : item
-      )
-    );
-  };
-
-  const removeItem = (id: string) => {
-    setCartItems(items => items.filter(item => item.id !== id));
-  };
-
-  const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
   const shipping = subtotal > 50 ? 0 : 5.99;
   const total = subtotal + shipping;
 
@@ -50,7 +19,7 @@ const Cart = () => {
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-4xl font-bold mb-8">Carrito de Compras</h1>
 
-        {cartItems.length === 0 ? (
+        {items.length === 0 ? (
           <Card>
             <CardContent className="p-12 text-center">
               <p className="text-xl text-muted-foreground mb-6">Tu carrito está vacío</p>
@@ -61,7 +30,7 @@ const Cart = () => {
           <div className="grid lg:grid-cols-3 gap-8">
             {/* Cart Items */}
             <div className="lg:col-span-2 space-y-4">
-              {cartItems.map((item) => (
+              {items.map((item) => (
                 <Card key={item.id}>
                   <CardContent className="p-4">
                     <div className="flex gap-4">

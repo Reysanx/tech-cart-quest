@@ -6,10 +6,12 @@ import { products } from "@/data/products";
 import { useParams, useNavigate } from "react-router-dom";
 import { ShoppingCart, Heart, Truck, Shield } from "lucide-react";
 import { toast } from "sonner";
+import { useCart } from "@/hooks/useCart";
 
 const ProductDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { addItem } = useCart();
   
   const product = products.find(p => p.id === id);
 
@@ -26,6 +28,12 @@ const ProductDetail = () => {
   }
 
   const handleAddToCart = () => {
+    addItem({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+    });
     toast.success("Producto añadido al carrito");
   };
 
